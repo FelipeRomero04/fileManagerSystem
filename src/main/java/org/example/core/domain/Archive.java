@@ -1,4 +1,6 @@
-package org.example.core.entity;
+package org.example.core.domain;
+
+import org.example.core.domain.status.CurrentStatus;
 
 import java.time.LocalDateTime;
 
@@ -6,11 +8,11 @@ public class Archive {
     private long id;
     private String name;
     private String type;
-    private String status = "PENDENTE";
+    private CurrentStatus status = CurrentStatus.PENDENTE;
     private LocalDateTime createdIn;
     private LocalDateTime processedIn;
 
-    public Archive(long id, String name, String type, String status, LocalDateTime createdIn, LocalDateTime processedIn) {
+    public Archive(long id, String name, String type, CurrentStatus status, LocalDateTime createdIn, LocalDateTime processedIn) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -45,11 +47,11 @@ public class Archive {
         this.type = type;
     }
 
-    public String getStatus() {
+    public CurrentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(CurrentStatus status) {
         this.status = status;
     }
 
