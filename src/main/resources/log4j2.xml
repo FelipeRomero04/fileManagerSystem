@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+
+        <!-- JDBC Appender -->
+        <JDBC name="archivemanager" tableName="archive_logg">
+
+            <DriverManager
+                    connectionString="jdbc:postgresql://localhost:5434/archivemanager"
+                    driverClassName="org.postgresql.Driver"
+                    userName="postgres"
+                    password="593711"/>
+
+            <Column name="event_date" isEventTimestamp="true"/>
+            <Column name="level" pattern="%level" isUnicode="false"/>
+            <Column name="logger" pattern="%logger" isUnicode="false"/>
+            <Column name="class" pattern="%class" isUnicode="false"/>
+            <Column name="message" pattern="%message" isUnicode="false"/>
+            <Column name="exception" pattern="%ex{full}" isUnicode="false"/>
+
+
+        </JDBC>
+
+        <!-- Async Wrapper -->
+        <Async name="AsyncDatabase" bufferSize="1">
+            <AppenderRef ref="archivemanager"/>
+        </Async>
+
+        <!-- Console (opcional, recomendado para debug) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger - %msg%n"/>
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="ERROR">
+            <AppenderRef ref="AsyncDatabase"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>

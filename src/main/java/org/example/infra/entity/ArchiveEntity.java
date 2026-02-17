@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@Table(name = "archivemanager")
+@Table(name = "archiveproperties")
 @Entity
 
 public class ArchiveEntity {
@@ -22,7 +22,7 @@ public class ArchiveEntity {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false, length = 8)
     private String type;
 
     @Column (nullable = false)
@@ -34,7 +34,7 @@ public class ArchiveEntity {
     @Column
     private LocalDateTime processedIn;
 
-//    private LogEntity log;
+
 
     public long getId() {
         return id;
@@ -82,5 +82,17 @@ public class ArchiveEntity {
 
     public void setProcessedIn(LocalDateTime processedIn) {
         this.processedIn = processedIn;
+    }
+
+    @Override
+    public String toString() {
+        return "ArchiveEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", status='" + status + '\'' +
+                ", createdIn=" + createdIn +
+                ", processedIn=" + processedIn +
+                '}';
     }
 }
