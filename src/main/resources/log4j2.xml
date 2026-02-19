@@ -15,7 +15,6 @@
             <Column name="event_date" isEventTimestamp="true"/>
             <Column name="level" pattern="%level" isUnicode="false"/>
             <Column name="logger" pattern="%logger" isUnicode="false"/>
-            <Column name="class" pattern="%class" isUnicode="false"/>
             <Column name="message" pattern="%message" isUnicode="false"/>
             <Column name="exception" pattern="%ex{full}" isUnicode="false"/>
 

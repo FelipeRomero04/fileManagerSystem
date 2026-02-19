@@ -11,8 +11,7 @@ public interface ArchiveAdapters {
     List<ArchiveEntity> listPendentsArchives();
     ArchiveEntity findById(int id);
     void processingArchive(int id, String newStatus); //Muda status para processando
-//    void processingPendents();
-//    void reProcessing();
+
 
 
 

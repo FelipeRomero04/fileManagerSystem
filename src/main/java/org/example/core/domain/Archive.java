@@ -1,7 +1,5 @@
 package org.example.core.domain;
 
-import org.example.core.domain.status.CurrentStatus;
-
 import java.time.LocalDateTime;
 
 public class Archive {

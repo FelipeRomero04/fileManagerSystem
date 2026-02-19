@@ -1,14 +1,13 @@
 package org.example.infra.adapters;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.core.domain.status.CurrentStatus;
+import org.apache.logging.log4j.ThreadContext;
+import org.example.core.domain.CurrentStatus;
 import org.example.core.useCases.archiveCases.ArchiverCases;
 import org.example.infra.entity.ArchiveEntity;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.example.utils.EntityManagerPersistence.getEntityManager;
@@ -74,15 +73,16 @@ public class ArchivesAdapterImpl implements ArchiveAdapters {
     @Override
     public void processingArchive(int id, String newStatus) {
 
-        ArchiveEntity archiveProcessing = findById(id);
         EntityManager em = getEntityManager();
+        ArchiveEntity archiveProcessing = em.find(ArchiveEntity.class, id);
+        System.out.println(archiveProcessing);
 
         try{
             CurrentStatus.valueOf(newStatus);
 
             em.getTransaction().begin();
             archiveProcessing.setStatus("PROCESSADO");
-            //TODO: UPDATE automatico não funciona
+//
             em.getTransaction().commit();
             System.out.println("Status alterado com sucesso!");
         }catch (IllegalArgumentException e){

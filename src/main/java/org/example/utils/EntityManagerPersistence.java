@@ -13,9 +13,6 @@ public class EntityManagerPersistence {
         return EMF.createEntityManager();
     }
 
-    public static void closeEntityManager(EntityManager em){
-        em.close();
-    }
 
 
 }

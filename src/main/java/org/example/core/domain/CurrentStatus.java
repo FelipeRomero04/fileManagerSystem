@@ -1,4 +1,4 @@
-package org.example.core.domain.status;
+package org.example.core.domain;
 
 public enum CurrentStatus {
     PENDENTE,
